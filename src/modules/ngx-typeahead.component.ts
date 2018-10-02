@@ -193,7 +193,7 @@ export class NgxTypeAheadComponent implements OnInit, OnDestroy {
         debounceTime(this.taDebounce),
         concat(),
         distinctUntilChanged(),
-        filter((query: string) => this.taAllowEmpty || hasCharacters(query)),
+        filter((query: string) => this.taAllowEmpty ||  query.length > 1),
         tap((query: string) => (this.searchQuery = query)),
         switchMap((query: string) => this.suggest(query))
       )
